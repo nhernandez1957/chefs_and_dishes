@@ -1,0 +1,34 @@
+@model Dish
+
+<form action="/dish/create" method="post">
+    <div class="form-group">
+        <label for="Name">Dish Name:</label>
+        <input class="form-control" asp-for="Name">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label for="Calories">Calories:</label>
+        <input class="form-control" asp-for="Calories">
+        <span class="text-danger" asp-validation-for="Calories"></span>
+    </div>
+    <div class="form-group">
+        <label for="Tastiness">Tastiness:</label>
+        <input class="form-control" asp-for="Tastiness">
+        <span class="text-danger" asp-validation-for="Tastiness"></span>
+    </div>
+    <div class="form-group">
+        <label for="ChefId">Chef:</label>
+        <select class="form-control" asp-for="ChefId">
+            @foreach(Chef c in ViewBag.AllChefs)
+            {
+                <option value="@c.ChefId">@c.FirstName @c.LastName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
